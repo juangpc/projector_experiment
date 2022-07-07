@@ -5,7 +5,7 @@ from random import *
 numTrials = 200
 min_isi_time = 1
 max_isi_time = 2
-white_screen_time = 2
+white_screen_time = 3
 trigger_on_value = 10
 trigger_off_value = 5
 
