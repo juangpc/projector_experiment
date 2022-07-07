@@ -11,26 +11,31 @@ trigger_off_value = 5
 
 stim_window = visual.Window(800, 600)
 
+def send_trigger(value):
+    pass
 
 def isi():
     core.wait(uniform(min_isi_time, max_isi_time))
 
 def screen():
-    # set color of window to white
-    # send trigger on
+    stim_window.color(1, 1, 1)
+    stim_window.callOnFlip(send_trigger, trigger_on_value)
     stim_window.flip()
     core.wait(white_screen_time)
-    # send trigger off
-    # set color of window black
+    stim_window.callOnFlip(send_trigger, trigger_off_value)
+    stim_window.color(0, 0, 0)
+    stim_window.flip()
 
 def cleanup():
-    win.close()
+    stim_window.close()
     core.quit()
 
 def stim_start():
+    stim.window.fullscr = True
     for trial_i in range(numTrials):
         isi()
         screen()
+    stim.window.fullscr = False
     cleanup()
 
 
